@@ -1,5 +1,7 @@
 # BlockUI
 
+# You can try the demo here : https://soldsiegfried3-ship-it.github.io/BlockUI/
+
 blockUI is a upcoming games launcher for windows (linux and mac too i think). 
 Its web based so it should run on anything powerful enough (this means it will not work on 3ds).
 
