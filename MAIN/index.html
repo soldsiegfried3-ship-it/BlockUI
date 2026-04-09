@@ -5,35 +5,72 @@
     <title>iisu ahh launcher</title>
     <!--<link rel="icon" href="icon" type="image/png" />-->
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
 </head> 
 <body>
     <div class="navbar">
         <img src="../LOGOS/logo simple.png" height="60px">
         <div onclick="window.location='../index.html'" style="padding-top: 5px;"><img src="../LOGOS/back.png" height="50px"></div>
-        <div onclick="window.location='../MAIN/index.html'" style="padding-top: 5px;"><img src="../LOGOS/home.png" height="50px"></div>
+        <div onclick="show_block_maker()" style="padding-top: 5px;"><img src="../LOGOS/addBlock.png" height="50px"></div>
+        <!-- <div onclick="window.location='../MAIN/index.html'" style="padding-top: 5px;"><img src="../LOGOS/home.png" height="50px"></div> -->
         <p style="position: absolute;padding-top: 22px; right:15px; color: aliceblue;" id="time">Time and date</p>
     </div>
     <div class="bg1"></div>
     <div class="bg2"></div>
-    <!--to change a box size, use the style attribute.-->
-    <div class="container">
-        <div class="draggable" style="display: initial;width: 480px;top: 0px; left: 320px; padding-top: 40px;">
-            <p>Welcome to my launcher !</p><br>
-            <p>its still in pre alpha tho</p><br>
-            <p>for now its more like a proof of concept</p>
-        </div>
-        <div class="draggable" style="background-image: url(../images/image3ds.png); background-size:contain; top: 480px; left: 0px;" onclick="window.location='../systems/index.html';"></div>
-        <div class="draggable" style="width: 480px; height: 320px;top: 320px; left: 320px;">
-            <video controls width="460px" style="border-radius: 20px;">
-                <source src="../videos/video.mp4" type="video/mp4">
-                
-            </video>
 
-        </div>
-        <div class="draggable" style="top: 640px; left: 0px; text-align: center;">Click above to see a console exemple page</div>
+
+
+    
+    <div class="container">
+
+
+
     </div>
 
+
+
+    <div id="newblock" style="display: none;">
+        <form id="form" onsubmit="single_block(); return false;">
+            <p>Pos X</p><input type="number" id="posx" title="position X" value="1" min="1" max="7"/>
+            <p>Pos Y</p><input type="number" id="posy" title="position Y" value="1" min="1" max="5"/>
+            <p>Block Width</p><input type="number" id="width" title="block width" value="1" min="1" max="6"/>
+            <p>Block Height</p><input type="number" id="height" title="block height" value="1" min="1" max="5"/>
+            <p>Block Content (HTML or text)</p><input type="text" id="content" title="block content (HTML or text)"/>
+            <input id="morebtn" type="button" value="More Options" onclick="more()" style="background-color: #1e569a;"/>
+            <p class="more" style="display: none;">Custom CSS</p><input class="more" type="text" id="customcss" title="Custom CSS" style="display: none;"/>
+            <p class="more" style="display: none;">Custom OnClick</p><input class="more" type="text" id="customonclick" title="Custom OnClick" style="display: none;"/>
+            <input type="submit" value="Create block" onclick="document.getElementById('newblock').style.display = 'none'; single_block({x: document.getElementById('posx').value * 160, y: document.getElementById('posy').value * 160, width: document.getElementById('width').value * 160, height: document.getElementById('height').value * 160, content: document.getElementById('content').value, custom_style: document.getElementById('customcss').value, custom_onclick: document.getElementById('customonclick').value});"/>
+            <input style="background-color: #9a1e1e;" type="button" value="Cancel" onclick="document.getElementById('newblock').style.display = 'none';"/>
+        </form>
+    </div>
     <script>
+
+        function single_block() {
+            console.log("creating single block")
+            var bdata = new FormData(document.getElementById("form"));
+            let newblock = document.createElement("div");
+            newblock.classList.add("draggable");
+            newblock.style.left = bdata.get("posx");
+            newblock.style.top = bdata.get("posy");
+            newblock.style.width = bdata.get("width");
+            newblock.style.height = bdata.get("height");
+            newblock.innerHTML = bdata.get("content");
+            if (bdata.get("customcss")) {
+                newblock.style.cssText += bdata.get("customcss");
+            }
+            newblock.onclick = function() {
+                if (bdata.get("customonclick")) {
+                    eval(bdata.get("customonclick"));
+                }
+            };
+            document.querySelector(".container").appendChild(newblock);
+            newblock.addEventListener('mousedown', startDrag);
+        }
+
+        var form = document.getElementById("form");
+        function handleForm(event) { event.preventDefault(); } 
+        form.addEventListener('submit', handleForm);
+
         const GRID_SIZE = 160;
         let dragging = null;
         let offsetX, offsetY;
@@ -107,5 +144,29 @@
             }
             return r;
         }
+
+
+
+
+        function more() {
+                if (document.getElementById("morebtn").value == "More Options") {
+                    document.getElementById("morebtn").value = "Less Options";
+                    document.querySelectorAll(".more").forEach(element => {
+                        element.style.display = "initial";
+                    });
+                } else {
+                    document.getElementById("morebtn").value = "More Options";
+                    document.querySelectorAll(".more").forEach(element => {
+                        element.style.display = "none";
+                    });
+                }
+            }
+        
+        function show_block_maker() {
+                document.getElementById("newblock").style.display = "initial";
+        }
+
+
+
     </script>
 </body>

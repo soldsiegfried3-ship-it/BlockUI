@@ -7,12 +7,11 @@
 body {
             background-color: rgb(11, 30, 54);
             font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-            overflow-y: scroll;
-            scrollbar-width: none;
+            overflow: hidden;
             background: linear-gradient(45deg, #0b1f37 0%, #10315b 100%);
             background-size: 400% 400%;
             animation: gradient 10s ease infinite;
+            color: aliceblue;
 }
 @keyframes gradient {
                     
@@ -49,6 +48,7 @@ p {
     height: 60px;
 
 }
+
 
 .navbar div:hover {
     transform: scale(110%);
@@ -117,81 +117,45 @@ p {
 }
 
 
-
-.system {
-    margin: 15%;
-    margin-top: 1%;
+.textBG {
+    margin-top: 5%;
+    margin-left: 5%;
+    padding: 40px;
+    width: 90%;
+    height: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
     backdrop-filter: brightness(70%);
-    height: 160px;
-    color: aliceblue;
-    padding: 20px;
     border-radius: 20px;
-    margin-bottom: 1%;
-}
-.system h1{
-    text-align: center;
-    color: #0b1f37;
-}
-.system h3{
-    text-align: center;
-    font-size: 11px;
-    color: #0b1f37;
-}
-.system h2{
-    margin-top: 20px;
-    text-align: center;
-    font-size: 30px;
-    color: #0b1f37;
 }
 
-
-.container {
-    margin: 15%;
-    margin-top: 0%;
-    backdrop-filter: brightness(70%);
-    color: aliceblue;
-    padding: 20px;
-    border-radius: 20px;
-}
-.game {
-    display: flex;
-    flex-direction: row;
-    margin: 1%;
-    margin-top: 1%;
-    backdrop-filter: brightness(30%);
-    color: aliceblue;
-    border-radius: 20px;
-    height: 160px;
-    background-color: #12427d;
-}
-.game img{
-    border-radius: 20px;
-    margin-right: 1%;
+.textBG h1{
+    color: #539dff;
 }
 
-.infos p{
-    text-align: left;
-    max-width: 40%;
-    overflow-y: scroll; 
-    max-height: 90px;
-    margin-left: 1%;
-    color: #85abda;
-    scrollbar-width: thin;
-}
-
-.game button{
-    border: #0b1f37;
-    border-radius: 20px;
-    width: 80px;
-    height: 80px;
-    min-width: 80px;
-    margin-right: 40px;
-    margin-top: 40px;
+.textBG h3{
     color: #ffffff;
 }
 
-.game button:hover {
-    filter: brightness(150%);
-    transform: scale(110%);
-    box-shadow: 0px 0px  10px 0px #85abda;
+p{
+    color: rgb(205, 232, 255);
+    text-align: left;
+    margin-left: 20px;
+}
+
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #00479852;
+    color: #fff;
 }
