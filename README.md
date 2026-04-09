@@ -7,6 +7,6 @@ Its web based so it should run on anything powerful enough (this means it will n
 
 Anyways for now its more of a concept since you cant really launch anything.
 
-Current version is pre alpha 0.0.2.
+Current version is pre alpha 0.0.3.
 
 moved repo to my real account 
