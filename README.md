@@ -1,6 +1,7 @@
 # BlockUI
 
 # You can try the demo here : https://elnoob0.github.io/BlockUI/
+# If you come directly after an update, wait like 5 minutes before entering the demo. Github has a latency between commited changes and the BlockUI web demo
 
 blockUI is a upcoming games launcher for windows (linux and mac too i think). 
 Its web based so it should run on anything powerful enough (this means it will not work on 3ds).
